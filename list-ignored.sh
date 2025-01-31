@@ -1,9 +1,17 @@
 #!/usr/bin/env bash
 
-# Configuration
-SOURCE_DIR="/mnt"
-EXCLUDED_DIRS=("letsencrypt" "node_modules")
-EXCLUDED_FILES=("*.csv" "*.zip")
+# Load configuration from .env
+ENV_FILE="$(dirname "$(readlink -f "$0")")/.env"
+if [ ! -f "$ENV_FILE" ]; then
+    echo "Error: .env file not found at $ENV_FILE"
+    echo
+    echo "Please create .env file with the following content:"
+    echo "SOURCE_DIR=\"/mnt\"                            # Base directory to scan"
+    echo "EXCLUDED_DIRS=(\"letsencrypt\" \"node_modules\") # Directories to skip"
+    echo "EXCLUDED_FILES=(\"*.csv\" \"*.zip\")             # File patterns to skip"
+    exit 1
+fi
+source "$ENV_FILE"
 
 # Function to check if path contains excluded directory
 contains_excluded_dir() {
