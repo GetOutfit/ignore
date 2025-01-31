@@ -32,11 +32,11 @@ The script:
 
 ## Configuration
 
-Both scripts share these configuration variables at the top of each file:
+Configuration variables are stored in `.env`:
 ```bash
-SOURCE_DIR="/mnt"               # Base directory to scan
-EXCLUDED_DIRS=("letsencrypt" "node_modules")   # Directories to skip
-EXCLUDED_FILES=("*.csv" "*.zip")               # File patterns to skip
+SOURCE_DIR="/mnt"				# Base directory to scan
+EXCLUDED_DIRS=("letsencrypt" "node_modules")	# Directories to skip
+EXCLUDED_FILES=("*.csv" "*.zip")		# File patterns to skip
 ```
 
 Modify these variables to customize which files and directories to exclude from processing.
